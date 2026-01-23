@@ -27,6 +27,15 @@ public class SalariedEmp extends Employee{
     }
 
     @Override
+    public double calculateSal() {
+       return sal+0.10*sal+0.15*sal-0.08*sal+bonus;
+    }
+    public double calculateBonus(float perc){
+        bonus=sal*perc;
+        return bonus;
+    }
+
+    @Override
     public String toString() {
         return super.toString()+"SalariedEmp{" +
                 "sal=" + sal +

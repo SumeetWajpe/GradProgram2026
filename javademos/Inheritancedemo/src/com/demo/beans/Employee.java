@@ -1,9 +1,11 @@
 package com.demo.beans;
 
-public class Employee extends Person {
+abstract public class Employee extends Person {
     private String dept;
     private String desg;
+    public Employee(){
 
+    }
     public Employee(int pid, String pname, String mobile,String dept, String desg) {
         super(pid,pname,mobile); //call parametrised constructor of parent
         System.out.println("in parametrised constructor");
@@ -26,7 +28,7 @@ public class Employee extends Person {
     public void setDesg(String desg) {
         this.desg = desg;
     }
-
+    abstract public double calculateSal();
     @Override
     public String toString() {
 

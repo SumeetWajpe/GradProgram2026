@@ -18,7 +18,7 @@ public interface EmployeeDao {
 
 	boolean removeById(int id);
 
-	List<Employee> sortBySal();
+	Set<Employee> sortBySal();
 
 	Set<Employee> sortById();
 

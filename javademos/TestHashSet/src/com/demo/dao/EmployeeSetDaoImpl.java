@@ -21,79 +21,95 @@ public class EmployeeSetDaoImpl implements EmployeeDao{
     }
 	@Override
 	public void save(Employee employee) {
-		//ToDo 1:add Employee object to HashSet
+		hset.add(employee);
 		
 	}
 
 	@Override
 	public Set<Employee> findAll() {
-
-        //ToDo 2: return the set
-        return null;
+		return hset;
 	}
 
 	@Override
 	public Employee findById(int id) throws EmployeeNotFound {
-		//ToDo 3:   use for loop to search the Employee by id
+//		for(Employee e:hset) {
+//			if(e.getEmpid()==id) {
+//				return e;
+//			}
+//		}
 
-        //this is Java 1.8 to replace for loop with stream functions
-	   /* Optional<Employee> emp1=hset.stream().filter(emp->emp.getEmpid()==id).findFirst();
+
+	   Optional<Employee> emp1=hset.stream().filter(emp->emp.getEmpid()==id).findFirst();
 	    if(emp1.isPresent())
-	         return emp1.get();*/
+	         return emp1.get();
 		return null;
 	}
 
 	@Override
 	public List<Employee> findByName(String nm) {
-		//ToDo 4: create a ArrayList and Search by name using for loop
-        // add objects to ArrayList which matches the nm
-
-        //this is java 1.8 stream functions to do the same
+		List<Employee> elist=new ArrayList<>();
+		for(Employee e:hset) {
+			if(e.getEname().equals(nm)) {
+				elist.add(e);
+			}
+		}
 	    //List<Employee> elist=hset.stream()
 		                  //   .filter(emp->emp.getEname().equals(nm))
 		                  //   .collect(Collectors.toList());
-// uncomment the code to check the size
-//	    if(elist.size()>0)
-//			return elist;
+	    if(elist.size()>0)
+			return elist;
 		return null;
 	}
 
 	@Override
 	public boolean removeById(int id) {
-		//use remove method of SetClass
-		return false;
+        //hashCode and equals
+		return hset.remove(new Employee(id));
+		
 	}
 
 	@Override
-	public Set<Employee> sortBySal() {
-		//ToDo 5 create a Comparator to sort it based on sal and pass it to TreeSet
-
-        //When you add objects to TreeSet. It arranges it in sorted order
-        //based on Comparator you are using
-
-        //uncomment the code Once yopu create comparator c
-//		Set<Employee> eset=new TreeSet<>(c);
-//		for(Employee e:hset) {
-//			eset.add(e);
-//		}
-//		return eset;
-        //comment this code
-        return null;
+	public List<Employee> sortBySal() {
+		Comparator<Employee> c=(o1,o2)->{
+			if(o1.getSal()<o2.getSal()) {
+				return -1;
+			}
+			else if(o1.getSal()==o2.getSal())
+				   return o1.getEmpid()-o2.getEmpid();
+			else
+				return 1;
+		};
+		List<Employee> lst=new ArrayList<>();
+        for(Employee e:hset){
+            lst.add(e);
+        }
+        lst.sort(c);
+		return lst;
 	}
 
 	@Override
 	public Set<Employee> sortById() {
-		// ToDo 6 add Comparable inetrface to Employee Class
-        //create a TreeSet and
-        //add all Objects from HashSet To TreeSet
-        return null;
+		Set<Employee> esetsorted=new TreeSet<>();
+		for(Employee e:hset) {
+            //calls compareTo function of Employee
+			esetsorted.add(e);
+		}
+		return esetsorted;
 	}
 
 	@Override
 	public Set<Employee> sortByName() {
-		//ToDo 7 sort the Set by name and return it
-        //Note: USe Comparator
-        return null;
+		Comparator<Employee> c=(o1,o2)->{
+			if(o1.getEname().compareTo(o2.getEname())==0)
+				   return o1.getEmpid()-o2.getEmpid();
+			else
+				return o1.getEname().compareTo(o2.getEname());
+		};
+		Set<Employee> eset=new TreeSet<>(c);
+		for(Employee e:hset) {
+			eset.add(e);
+		}
+		return eset;
 	}
 
 }

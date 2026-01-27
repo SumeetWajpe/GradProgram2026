@@ -6,7 +6,7 @@ import java.util.Set;
 
 import com.demo.beans.Employee;
 import com.demo.dao.EmployeeDao;
-import com.demo.dao.EmployeeSetDaoImpl;
+import com.demo.dao.EmployeeDaoImpl;
 import com.demo.exceptions.EmployeeNotFound;
 import com.demo.utility.GenerateDao;
 
@@ -16,7 +16,7 @@ public class EmployeeServiceImpl implements EmployeeService{
 	public EmployeeServiceImpl() {
 		super();
 		//this.edao = GenerateDao.getDao(1);
-        edao=new EmployeeSetDaoImpl();
+        edao=new EmployeeDaoImpl();
 	}
 
 	@Override
@@ -55,7 +55,7 @@ public class EmployeeServiceImpl implements EmployeeService{
 	}
 
 	@Override
-	public List<Employee> sortBySal() {
+	public Set<Employee> sortBySal() {
 		return edao.sortBySal();
 	}
 
@@ -65,7 +65,7 @@ public class EmployeeServiceImpl implements EmployeeService{
 	}
 
 	@Override
-	public List<Employee> sortByName() {
+	public Set<Employee> sortByName() {
 		return edao.sortByName();
 	}
 	

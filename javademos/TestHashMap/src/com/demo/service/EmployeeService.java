@@ -18,10 +18,10 @@ public interface EmployeeService {
 
 	boolean deleteById(int id);
 
-	List<Employee> sortBySal();
+	Set<Employee> sortBySal();
 
 	Set<Employee> sortById();
 
-	List<Employee> sortByName();
+	Set<Employee> sortByName();
 
 }

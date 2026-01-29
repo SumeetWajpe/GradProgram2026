@@ -4,9 +4,7 @@ import com.demo.FinDemy.beans.Course;
 import com.demo.FinDemy.service.CourseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -26,4 +24,32 @@ public class CourseController {
         List<Course> courses = courseService.getAllCourses();
         return ResponseEntity.ok(courses);
     }
+
+    @GetMapping("/courses/{cid}")
+    public ResponseEntity<Course> getCourseById(@PathVariable int cid) {
+        Course course = courseService.getById(cid);
+        return ResponseEntity.ok(course);
+    }
+
+    @PostMapping("/courses/{cid}")
+    public ResponseEntity<Course> createCourse(@RequestBody Course course) {
+        courseService.addCourse(course);
+        return ResponseEntity.status(201).body(course);
+
+    }
+
+    @PutMapping("/courses/{cid}")
+    public ResponseEntity<String> updateCourse(@RequestBody Course course) {
+        courseService.updateCourse(course);
+        return ResponseEntity.status(201).body("course updated succesfully");
+
+    }
+
+    @DeleteMapping("/courses/{cid}")
+    public ResponseEntity<String> deleteById(@PathVariable int cid) {
+       courseService.removeById(cid);
+        return ResponseEntity.ok("Deleted successfully "+cid);
+    }
+
+
 }

@@ -21,7 +21,7 @@ public class Trainer {
     private String tname;
     private int experience;
     @OneToMany(mappedBy = "trainer")
-   //@JsonBackReference
+   // @JsonBackReference
     @JsonIgnoreProperties("trainer")
     private List<Course> clist;
 

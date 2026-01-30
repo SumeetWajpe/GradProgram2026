@@ -7,6 +7,7 @@ import com.demo.FinDemy.dto.CourseResponse;
 import com.demo.FinDemy.exceptions.CourseNotFoundException;
 import com.demo.FinDemy.mapper.CourseMapper;
 import com.demo.FinDemy.repository.CourseRepository;
+import net.bytebuddy.implementation.bind.annotation.IgnoreForBinding;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -40,7 +41,8 @@ class CourseServiceImplTest {
 
         assertThat(responses).hasSize(1);
         assertThat(responses.get(0).getCid()).isEqualTo(1);
-        assertThat(responses.get(0).getTname()).isEqualTo("Alice");
+        assertThat(responses.get(0).getTname()).isEqualTo("xxx");
+       // assertEqual(responses.get(0).getTname(),"Alice");
         verify(courseRepository).findAll();
     }
 
@@ -67,7 +69,7 @@ class CourseServiceImplTest {
         verify(courseRepository).findById(3);
     }
 
-    @Test
+     @Test
     void throwsCourseNotFoundWhenGetByIdNotFound() {
         when(courseRepository.findById(99)).thenReturn(Optional.empty());
 

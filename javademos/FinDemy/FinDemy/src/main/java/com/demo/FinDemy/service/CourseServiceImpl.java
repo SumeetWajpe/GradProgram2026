@@ -6,6 +6,7 @@ import com.demo.FinDemy.dto.CourseResponse;
 import com.demo.FinDemy.exceptions.CourseNotFoundException;
 import com.demo.FinDemy.mapper.CourseMapper;
 import com.demo.FinDemy.repository.CourseRepository;
+import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -48,12 +49,14 @@ public class CourseServiceImpl implements CourseService{
     }
 
     @Override
+    @Transactional
     public void updateCourse(CourseRequest course) {
         Course c=courseRepository.findById(course.getCid())
                 .orElseThrow(() -> new CourseNotFoundException("Course not found with id: " +course.getCid()));
         c.setCname(course.getCname());
         c.setDuration(course.getDuration());
         c.setStartdate(course.getStartdate());
+
         courseRepository.save(c);
     }
 

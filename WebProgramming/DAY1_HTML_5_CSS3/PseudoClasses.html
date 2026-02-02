@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      /* p:first-child {
+        border: 2px solid black;
+      } */
+      div p:last-child {
+        border: 2px solid black;
+      }
+    </style>
+  </head>
+  <body>
+    <div>
+      <p>
+        This is a simple HTML Page for CSS3 Pseudo Selectors. Why is that our
+        first attempt at changing the color and font-weight failed? As we
+        learned, it was because simply using the class name by itself had a
+        lower specificity value and was trumped by the other selector which
+        targeted the unordered list with the ID value.
+      </p>
+    </div>
+
+    <article>
+      <section>
+        <header>
+          <h2>Section Header</h2>
+        </header>
+        <p>This para is a second child !</p>
+      </section>
+    </article>
+  </body>
+</html>

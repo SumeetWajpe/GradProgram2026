@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      /*
+        div > p ==> Children (Immediate child) CSS 2
+        div p ==> Descendants - CSS 2
+        */
+
+      /*  CSS 3 selectors */
+      /* p:first-child {
+        border: 2px solid black;
+      } */
+      /* p:last-child {
+        border: 2px solid black;
+      } */
+      /* ul li:nth-child(2n + 1) {
+        background-color: lightblue;
+      }
+      ul li:nth-child(2n) {
+        background-color: lightgreen;
+      } */
+
+      p:last-of-type {
+        background-color: lightblue;
+      }
+    </style>
+  </head>
+  <body>
+    <ul>
+      <li>Assam Tea</li>
+      <li>Darjeeling Tea</li>
+      <li>Nilgiri Tea</li>
+      <li>Jasmine Tea</li>
+      <li>Ginger Tea</li>
+      <li>Masala Tea</li>
+    </ul>
+
+    <div>
+      <p>Another p</p>
+      <p>
+        This is a simple HTML Page for CSS3 Pseudo Selectors. Why is that our
+        first attempt at changing the color and font-weight failed? As we
+        learned, it was because simply using the class name by itself had a
+        lower specificity value and was trumped by the other selector which
+        targeted the unordered list with the ID value.
+      </p>
+      <span>Last Child !</span>
+    </div>
+
+    <article>
+      <section>
+        <header>
+          <h2>Section Header</h2>
+        </header>
+        <p>This para is a second child !</p>
+      </section>
+    </article>
+  </body>
+</html>

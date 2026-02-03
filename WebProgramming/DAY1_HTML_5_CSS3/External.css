@@ -1,0 +1,13 @@
+  input {
+      background-color: lightblue;
+      border: 4px dashed black;
+  }
+
+  .special {
+      border: 2px solid red;
+      background-color: aquamarine;
+  }
+
+  #first {
+      background-color: lightcoral;
+  }
